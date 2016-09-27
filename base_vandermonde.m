@@ -1,17 +1,20 @@
-function A = base_vandermonde(pts)
-  M = zeros(size(pts)(2), size(pts)(2));
-  pts;
-  for n = 1:size(pts)(2)
-    for m = 1:size(pts)(2)
-      M(n, m) = pts(1, n)^(m-1);
+# A est un vector contenant les coefficients du polynome
+function A = base_vandermonde(x, y)
+  # M matrice contenant les polynomes
+  M = zeros(size(x)(1), size(x)(1));
+  for n = 1:size(x)(1)
+    for m = 1:size(x)(1)
+      M(n, m) = x(n)^(m-1);
     end
   end
-  M;
-  Y = zeros(size(pts)(2), 1);
-  A = zeros(size(pts)(2), 1);
-  for n = 1:size(pts)(2)
-    Y(n, 1) = pts(2, n);
+  # vecteur contentant tous les y
+  Y = zeros(size(x)(1), 1);
+  # vecteurs solution du systeme, contenant les coefficients du polynome final
+  A = zeros(size(x)(1), 1);
+  for n = 1:size(x)(1)
+    Y(n, 1) = y(n);
   end
   Y;
+  # resolution du systeme
   A = M \ Y;
 endfunction
