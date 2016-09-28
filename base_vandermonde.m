@@ -1,5 +1,6 @@
 # A est un vector contenant les coefficients du polynome
-function A = base_vandermonde(x, y)
+function image = base_vandermonde(x, y, t)
+  image = 0;
   # M matrice contenant les polynomes
   M = zeros(size(x)(1), size(x)(1));
   for n = 1:size(x)(1)
@@ -17,4 +18,9 @@ function A = base_vandermonde(x, y)
   Y;
   # resolution du systeme
   A = M \ Y;
+  A(2)(1);
+  for n = (1:size(A)(1))
+    # creation du polynome final
+    image = image + A(n)(1)*(t^(n-1));
+  end
 endfunction
