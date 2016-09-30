@@ -1,37 +1,35 @@
 
 %[-2; -1; 1; 2], [10; 4; 6; 3], 1
-# P est l'image de la fonction
 function image = base_newton(x, y, t)
-  % calcul des omegas
+
+  % calcul des omegas(t)
   omega = [];
   for k=1:length(x)
     omega(k) = 1;
-    for i=1:k
+    for i=1:k-1
       omega(k) = omega(k) * (t - x(i));
     end
-    %disp('omega(',k,') = ', omega(k));
-    printf('omega(%d) = %d\n',k,omega(k))
+    %printf('omega(%d) = %d\n',k,omega(k))
   end
-  % calcul des coefficients
-
+  omega
+  % calcul des coefficients alphas
   P = zeros(length(x));
   for k=1:length(x)
     for col=1:k
       P(k,col) = 1;
       for i=1:col
-        if i-1 == 0
-          'lol'
-        else
-          %(x(k) - x(i-1))
+        if i-1 ~= 0
           P(k,col) = P(k,col) * (x(k) - x(i-1));
         end
       end
     end
   end
-  P
-  alpha = P \ y
-
-
-
+  y
+  alpha = P \ y;
+  % calcul de la somme des alpha * omega
+  image=0;
+  for i=1:length(x)
+    image = image + omega(i)*alpha(i);
+  end
 
 endfunction
