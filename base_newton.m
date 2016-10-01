@@ -11,7 +11,6 @@ function image = base_newton(x, y, t)
     end
     %printf('omega(%d) = %d\n',k,omega(k))
   end
-  omega
   % calcul des coefficients alphas
   P = zeros(length(x));
   for k=1:length(x)
@@ -24,7 +23,6 @@ function image = base_newton(x, y, t)
       end
     end
   end
-  y
   alpha = P \ y;
   % calcul de la somme des alpha * omega
   image=0;
