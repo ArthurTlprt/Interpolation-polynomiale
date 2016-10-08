@@ -23,33 +23,33 @@ pause(3); %pause du graphique
 
 figure('position', [100, 100, 500, 800])    % postion + size
 
-%affichage de g
+      %affichage de g
 subplot (3, 1, 1)
 plot_func(@runge, [-1, 1])
 
+      % affichage de g interpolée avec n=9
 mx = [];
 my = [];
-
 subdivision = 9;
+% creation des points d'interpolation
 for i=1:subdivision
   mx(i) = -1 + i*(2/subdivision);
   my(i) = runge(mx(i));
 end
 mx = mx';
 my = my';
-
 subplot (3, 1, 2)
 plot_interpo(@base_lagrange,mx, my, [-1,1]);
 
+      % affichage de g interpoléee avec n = 19
 subdivision = 19;
+% creation des points d'interpolation
 for i=1:subdivision
   mx(i) = -1 + i*(2/subdivision);
   my(i) = runge(mx(i));
 end
 mx = mx';
 my = my';
-
-
 subplot (3, 1, 3)
 plot_interpo(@base_lagrange,mx, my, [-1,1]);
 
